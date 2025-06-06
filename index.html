@@ -1,0 +1,109 @@
+<html>
+<head>
+  <title>Madison Water Usage Project</title>
+  <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script>
+    function subscribe() {
+      var email = prompt("What is your email?", "example@example.com");
+
+      $.post({
+        type: "POST",
+        url: "email",
+        data: email,
+        contentType: "application/text; charset=utf-8",
+        dataType: "json"
+      }).done(function(data) {
+        alert(data);
+      }).fail(function(data) {
+        alert("POST failed");
+      });
+    }
+  </script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    nav {
+      margin: 20px 0;
+      padding: 10px;
+      background-color: #e6f7ff;
+      border-radius: 5px;
+    }
+    nav a {
+      margin-right: 15px;
+      text-decoration: none;
+      color: #0066cc;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .highlight {
+      background-color: #f0f8ff;
+      padding: 15px;
+      border-radius: 5px;
+      border-left: 4px solid #0066cc;
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to the MP5's Madison Water Usage Project</h1>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="browse.html">Browse Data</a>
+    <a href="browse.json">Browse JSON</a>
+    <a id="donate-link" href="donate.html?from=VERSION" style="color: COLOR;">Donate</a>
+    <button onclick="subscribe()">Subscribe</button>
+  </nav>
+
+  <p>This project tracks and analyzes daily water usage patterns throughout Madison, Wisconsin in 2019. We provide comprehensive data on water consumption broken down by consumer type, helping the community understand usage trends and promote conservation efforts.</p>
+
+  <div class="highlight">
+    <h2>Our Dataset Includes:</h2>
+    <ul>
+      <li>Daily water usage data from January 2019 to August 2020</li>
+      <li>Breakdowns by residential, multi-family, commercial, industrial, and public authority usage</li>
+      <li>Total gallons consumed across the city</li>
+    </ul>
+  </div>
+
+  <h2>Project Goals:</h2>
+  <ul>
+    <li>Monitor water consumption patterns across different sectors</li>
+    <li>Identify opportunities for water conservation</li>
+    <li>Provide transparent access to water usage data</li>
+    <li>Support research and policy development for sustainable water management</li>
+  </ul>
+
+  <p>Explore our <a href="browse.json">data browser</a> to see the complete dataset, or consider supporting our project with a donation to help expand our research efforts.</p>
+
+  <hr>
+  <h1>Dashboard:</h1>
+  <p>Provided below is the data visualization.</p>
+    
+    <div>
+  <h2>Distribution of Total Water Usage</h2>
+  <img src="dashboard1.svg" alt="Histogram"><br><br>
+    </div>
+    
+    <div>
+  <h2>Distribution with 100 Bins</h2>
+  <img src="dashboard1.svg?bins=100" alt="Histogram with 100 bins"><br><br>
+    </div>
+
+    <div>
+  <h2>Water Usage by Consumer Type</h2>
+  <img src="dashboard2.svg" alt="Box Plot"><br><br>
+    </div>
+        
+    <div>
+  <h2>Residential vs Commercial Water Usage</h2>
+  <img src="dashboard3.svg" alt="Scatter Plot"><br><br>
+    </div>
+        
+</body>
+</html>
